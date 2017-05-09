@@ -3,7 +3,9 @@ var NativeStorageError = require('./NativeStorageError');
 
 
 function isInBrowser() {
-  inBrowser = (window.cordova && (window.cordova.platformId === 'browser' || window.cordova.platformId === 'osx')) || !(window.phonegap || window.cordova);
+  // inBrowser = (window.cordova && (window.cordova.platformId === 'browser' || window.cordova.platformId === 'osx')) || !(window.phonegap || window.cordova);
+	// customization for app detection of browser simulator, IBM MBS sets window.cordova.platformId = 'ios'
+	inBrowser = !navigator.userAgent.match(/(iPhone|iPod|iPad|Android)/);
   return inBrowser;
 }
 
